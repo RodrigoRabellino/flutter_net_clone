@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_net_clone/data/data.dart';
 import 'package:flutter_net_clone/widgets/widgets.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50.0),
         child: CustomAppBar(
@@ -42,11 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: const FAButton(),
       body: CustomScrollView(
         controller: _scrollController,
-        slivers: [
+        slivers: const [
           SliverToBoxAdapter(
-            child: ContentHeader(),
+            child: ContentHeader(
+              featuredContent: sintelContent,
             ),
-          )
+          ),
         ],
       ),
     );
