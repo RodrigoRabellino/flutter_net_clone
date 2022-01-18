@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_net_clone/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +16,9 @@ class MyApp extends StatelessWidget {
       title: 'Netflix Clone',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.black,
       ),
-      home: const Scaffold(),
+      home: const HomeScreen(),
     );
   }
 }
