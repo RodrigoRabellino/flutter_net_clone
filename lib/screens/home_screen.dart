@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_net_clone/cubits/cubits.dart';
 import 'package:flutter_net_clone/data/data.dart';
 import 'package:flutter_net_clone/widgets/widgets.dart';
 
@@ -11,15 +13,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
-  double _scrollOfSet = 0.0;
 
   @override
   void initState() {
     _scrollController = ScrollController()
       ..addListener(() {
-        setState(() {
-          _scrollOfSet = _scrollController.offset;
-        });
+        context.read<AppBarCubit>().setOffset(_scrollController.offset);
       });
     super.initState();
   }
@@ -37,8 +36,12 @@ class _HomeScreenState extends State<HomeScreen> {
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size(screenSize.width, 50.0),
-        child: CustomAppBar(
-          scrollOffSet: _scrollOfSet,
+        child: BlocBuilder<AppBarCubit, double>(
+          builder: (context, scrollOffset) {
+            return CustomAppBar(
+              scrollOffSet: scrollOffset,
+            );
+          },
         ),
       ),
       floatingActionButton: const FAButton(),
