@@ -50,6 +50,15 @@ class _HomeScreenState extends State<HomeScreen> {
               featuredContent: sintelContent,
             ),
           ),
+          SliverPadding(
+            padding: EdgeInsets.only(top: 20.0),
+            sliver: SliverToBoxAdapter(
+              child: Previews(
+                title: "Previews:",
+                contentList: previews,
+              ),
+            ),
+          )
         ],
       ),
     );
