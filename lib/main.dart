@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_net_clone/screens/home_screen.dart';
+import 'package:flutter_net_clone/screens/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const HomeScreen(),
+      home: NavScreen(),
     );
   }
 }

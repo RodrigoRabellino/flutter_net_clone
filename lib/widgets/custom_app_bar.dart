@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_net_clone/assets.dart';
+import 'package:flutter_net_clone/widgets/widgets.dart';
 
 class CustomAppBar extends StatelessWidget {
   final double scrollOffSet;
@@ -24,15 +25,15 @@ class CustomAppBar extends StatelessWidget {
               child: Row(
                 children: [
                   _AppBarButton(
-                    onTap: () => print("TVShow"),
+                    onTap: () => showToast(context: context, title: "TV Shows"),
                     title: "TV Show",
                   ),
                   _AppBarButton(
-                    onTap: () => print("Movies"),
+                    onTap: () => showToast(context: context, title: "Movies"),
                     title: "Movies",
                   ),
                   _AppBarButton(
-                    onTap: () => print("My List"),
+                    onTap: () => showToast(context: context, title: "MyList"),
                     title: "My List",
                   ),
                 ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_net_clone/models/content_model.dart';
+import 'package:flutter_net_clone/widgets/widgets.dart';
 
 class Previews extends StatelessWidget {
   final String title;
@@ -23,7 +24,7 @@ class Previews extends StatelessWidget {
             ),
           ),
         ),
-        Container(
+        SizedBox(
           height: 165.0,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -51,7 +52,7 @@ class _ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => print(content.name),
+      onTap: () => showToast(context: context, title: content.name),
       child: Stack(
         children: [
           Container(

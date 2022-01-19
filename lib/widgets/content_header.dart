@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_net_clone/models/models.dart';
-import 'package:flutter_net_clone/widgets/vertical_icon_button.dart';
 import 'package:flutter_net_clone/widgets/widgets.dart';
 
 class ContentHeader extends StatelessWidget {
