@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_net_clone/models/models.dart';
 import 'package:flutter_net_clone/widgets/vertical_icon_button.dart';
+import 'package:flutter_net_clone/widgets/widgets.dart';
 
 class ContentHeader extends StatelessWidget {
   final Content featuredContent;
@@ -47,13 +48,18 @@ class ContentHeader extends StatelessWidget {
               VerticalIconButton(
                 icon: Icons.add,
                 title: "List",
-                onTap: () => print("myList"),
+                onTap: () => showToast(
+                    context: context,
+                    title: "Added to List " + featuredContent.name),
               ),
-              const _PlayButton(),
+              _PlayButton(
+                title: featuredContent.name.toString(),
+              ),
               VerticalIconButton(
                 icon: Icons.info_outline,
                 title: "Info",
-                onTap: () => print("Info"),
+                onTap: () => showToast(
+                    context: context, title: "Info: " + featuredContent.name),
               ),
             ],
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,12 +71,13 @@ class ContentHeader extends StatelessWidget {
 }
 
 class _PlayButton extends StatelessWidget {
-  const _PlayButton({Key? key}) : super(key: key);
+  final String title;
+  const _PlayButton({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => showToast(context: context, title: "Play " + title),
       style: ElevatedButton.styleFrom(
           primary: Colors.white,
           padding: const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0)),
