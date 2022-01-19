@@ -14,34 +14,133 @@ class CustomAppBar extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 24.0),
       color: Colors.black.withOpacity((scrollOffSet / 350).clamp(0, 1)),
-      child: SafeArea(
-        child: Row(
-          children: [
-            Image.asset(Assets.netflixLogo0),
-            const SizedBox(
-              width: 12,
+      child: const Responsive(
+        mobile: _CustomAppBarMobile(),
+        desktop: _CustomAppBarDesktop(),
+        tablet: _CustomAppBarMobile(),
+      ),
+    );
+  }
+}
+
+class _CustomAppBarMobile extends StatelessWidget {
+  const _CustomAppBarMobile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Row(
+        children: [
+          Image.asset(Assets.netflixLogo0),
+          const SizedBox(
+            width: 12,
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "TV Shows"),
+                  title: "TV Show",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "Movies"),
+                  title: "Movies",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "MyList"),
+                  title: "My List",
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
-            Expanded(
-              child: Row(
-                children: [
-                  _AppBarButton(
-                    onTap: () => showToast(context: context, title: "TV Shows"),
-                    title: "TV Show",
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _CustomAppBarDesktop extends StatelessWidget {
+  const _CustomAppBarDesktop({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Row(
+        children: [
+          Image.asset(Assets.netflixLogo1),
+          const SizedBox(
+            width: 12,
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "Home"),
+                  title: "Home",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "TV Shows"),
+                  title: "TV Show",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "Movies"),
+                  title: "Movies",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "Latest"),
+                  title: "Latest",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "MyList"),
+                  title: "My List",
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ),
+          ),
+          const Spacer(),
+          Expanded(
+            child: Row(
+              children: [
+                IconButton(
+                  color: Colors.white,
+                  onPressed: () => showToast(context: context, title: "Search"),
+                  icon: const Icon(
+                    Icons.search,
+                    size: 28.0,
                   ),
-                  _AppBarButton(
-                    onTap: () => showToast(context: context, title: "Movies"),
-                    title: "Movies",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "KIDS"),
+                  title: "KIDS",
+                ),
+                _AppBarButton(
+                  onTap: () => showToast(context: context, title: "DVD"),
+                  title: "DVD",
+                ),
+                IconButton(
+                  color: Colors.white,
+                  onPressed: () => showToast(context: context, title: "Gift"),
+                  icon: const Icon(
+                    Icons.card_giftcard,
+                    size: 28.0,
                   ),
-                  _AppBarButton(
-                    onTap: () => showToast(context: context, title: "MyList"),
-                    title: "My List",
+                ),
+                IconButton(
+                  color: Colors.white,
+                  onPressed: () =>
+                      showToast(context: context, title: "Notifications"),
+                  icon: const Icon(
+                    Icons.notifications,
+                    size: 28.0,
                   ),
-                ],
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              ),
-            )
-          ],
-        ),
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ),
+          )
+        ],
       ),
     );
   }
